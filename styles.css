@@ -1,0 +1,302 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#e5e5e5;
+    display:flex;
+    justify-content:center;
+    padding:40px 0;
+    font-family:Segoe UI, sans-serif;
+}
+
+
+/* PAPER */
+.paper{
+    width:1356px;
+    background:white;
+    overflow:hidden;
+    box-shadow:0 0 25px rgba(0,0,0,0.15);
+}
+
+
+/* HEADER */
+header{
+    width:100%;
+    height:280px;
+    background:white;
+    padding:30px 35px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+
+    border-bottom:1px solid #ddd;
+}
+
+
+/* LOGO CONTAINER */
+.logo-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+/* HUGE LOGO */
+.logo{
+    font-size:148px;
+    font-weight:900;
+    text-align:center;
+    letter-spacing:-5px;
+    width:100%;
+    line-height:0.9;
+    text-transform:uppercase;
+    color:rgb(0, 0, 0);
+    white-space:nowrap;
+    transform:scaleX(0.88);
+}
+
+
+/* NAVBAR */
+nav{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+
+/* NAV LINKS */
+nav a{
+    text-decoration:none;
+    color:black;
+    font-size:13px;
+    font-weight:600;
+}
+
+nav a:hover{
+    opacity:0.6;
+}
+
+
+/* SPLIT WRAPPER */
+.split-wrapper{
+    width:100%;
+}
+
+
+/* TOP IMAGE */
+.top-image{
+    width:100%;
+    height:450px;
+
+    background-image:url("topimage.jpg");
+    background-size:cover;
+    background-position:center;
+
+    transition:all 1s ease;
+    transform:translateY(0);
+}
+
+
+/* ABOUT SECTION */
+.about-section{
+    width:100%;
+    height:400px;
+    background:white;
+    padding:50px 80px;
+    transition:all 1s ease;
+}
+
+
+/* EXPANDED ABOUT */
+.about-section.active{
+    padding:40px 100px;
+}
+
+
+/* ABOUT CONTAINER */
+.about-container{
+    display:grid;
+    grid-template-columns:45% 55%;
+    gap:40px;
+
+    position:relative;
+
+    opacity:0;
+
+    transition:opacity 0.8s ease 0.3s;
+}
+
+
+/* ABOUT CONTAINER VISIBLE */
+.about-section.active .about-container{
+    opacity:1;
+}
+
+
+/* LEFT SIDE */
+.about-content-wrapper{
+    position:relative;
+    min-height:420px;
+}
+
+
+/* ABOUT TITLE */
+.about-title{
+    font-size:120px;
+    font-weight:900;
+
+    line-height:0.85;
+
+    color:black;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* ABOUT IMAGE WRAPPER */
+.about-image-wrapper{
+    position:absolute;
+
+    left:260px;
+    top:80px;
+
+    z-index:1;
+}
+
+
+/* ABOUT IMAGE */
+.about-image{
+    width:170px;
+
+    height:auto;
+
+    object-fit:cover;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+
+    transform:translateY(200px);
+
+    opacity:0;
+
+    transition:all 1s ease 0.60s;
+}
+
+
+/* IMAGE ANIMATION ON SCROLL */
+.about-section.active .about-image{
+    transform:translateY(0);
+    opacity:1;
+}
+
+
+/* RIGHT SIDE TEXT */
+.about-paragraphs{
+    display:flex;
+    flex-direction:column;
+
+    gap:40px;
+
+    padding-top:20px;
+}
+
+
+/* ABOUT TEXT */
+.about-paragraphs p{
+    font-size:18px;
+
+    line-height:2;
+
+    color:#666;
+
+    max-width:650px;
+}
+
+
+/* BOTTOM IMAGE */
+.bottom-image{
+    width:100%;
+    height:800px;
+
+    background-image:url("bottomimage.jpg");
+    background-size:cover;
+    background-position:center;
+
+    transition:all 1s ease;
+
+    transform:translateY(0);
+}
+
+
+/* IMAGE MOVEMENT ON EXPAND */
+.split-wrapper.active .top-image{
+    transform:translateY(-80px);
+}
+
+.split-wrapper.active .bottom-image{
+    transform:translateY(80px);
+}
+
+
+/* MOBILE */
+@media(max-width:1400px){
+
+    .paper{
+        width:95%;
+    }
+
+    .logo{
+        font-size:10vw;
+    }
+}
+
+
+@media(max-width:900px){
+
+    header{
+        height:auto;
+        gap:30px;
+    }
+
+    nav{
+        gap:20px;
+        flex-wrap:wrap;
+    }
+
+    .about-section{
+        padding:60px 40px;
+    }
+
+    .about-container{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .about-title{
+        font-size:70px;
+    }
+
+    .about-image-wrapper{
+        position:relative;
+        left:0;
+        top:20px;
+    }
+
+    .about-content-wrapper{
+        min-height:auto;
+    }
+
+    .about-image{
+        width:200px;
+    }
+}
+
