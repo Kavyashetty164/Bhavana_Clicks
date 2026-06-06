@@ -1,4 +1,3 @@
-
 *{
     margin:0;
     padding:0;
@@ -13,7 +12,6 @@ body{
     font-family:Segoe UI, sans-serif;
 }
 
-
 /* PAPER */
 .paper{
     width:1356px;
@@ -22,33 +20,40 @@ body{
     box-shadow:0 0 25px rgba(0,0,0,0.15);
 }
 
+/* ====================================== */
+/* INTRO ANIMATION */
+/* ====================================== */
 
-/* HEADER */
-header{
-    width:100%;
-    height:280px;
+.intro-screen{
+    position:fixed;
+    inset:0;
     background:white;
-    padding:30px 35px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    align-items:center;
-
-    border-bottom:1px solid #ddd;
-}
-
-
-/* LOGO CONTAINER */
-.logo-container{
-    width:100%;
     display:flex;
     justify-content:center;
     align-items:center;
+    z-index:9999;
+    overflow:hidden;
 }
 
+.intro-logo{
+    position:absolute;
+    font-size:180px;
+    font-weight:900;
+    letter-spacing:-5px;
+    text-transform:uppercase;
+    white-space:nowrap;
+    transition:transform 2s cubic-bezier(.22,1,.36,1);
+    line-height:0.9;
+    transform:scaleX(0.88);
+}
 
-/* HUGE LOGO */
+.intro-screen.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity 1s ease;
+}
+
 .logo{
     font-size:148px;
     font-weight:900;
@@ -57,13 +62,54 @@ header{
     width:100%;
     line-height:0.9;
     text-transform:uppercase;
-    color:rgb(0, 0, 0);
+    color:rgb(0,0,0);
     white-space:nowrap;
     transform:scaleX(0.88);
 }
 
+.paper{
+    opacity:1;
+    animation:showPage .2s ease forwards;
+    animation-delay:0.5s;
+}
 
-/* NAVBAR */
+@keyframes showPage{
+    to{ opacity:1; }
+}
+
+/* HEADER */
+header{
+    width:100%;
+    height:280px;
+    background:white;
+    padding:30px 35px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #ddd;
+}
+
+.logo-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.logo{
+    font-size:148px;
+    font-weight:900;
+    text-align:center;
+    letter-spacing:-5px;
+    width:100%;
+    line-height:0.9;
+    text-transform:uppercase;
+    color:rgb(0,0,0);
+    white-space:nowrap;
+    transform:scaleX(0.88);
+}
+
 nav{
     width:100%;
     display:flex;
@@ -71,8 +117,6 @@ nav{
     align-items:center;
 }
 
-
-/* NAV LINKS */
 nav a{
     text-decoration:none;
     color:black;
@@ -84,219 +128,325 @@ nav a:hover{
     opacity:0.6;
 }
 
-
 /* SPLIT WRAPPER */
 .split-wrapper{
     width:100%;
 }
 
-
 /* TOP IMAGE */
 .top-image{
     width:100%;
     height:450px;
-
     background-image:url("topimage.jpg");
+    background-color:#c8b8a8;
     background-size:cover;
     background-position:center;
-
     transition:all 1s ease;
     transform:translateY(0);
 }
 
-
 /* ABOUT SECTION */
 .about-section{
     width:100%;
-    height:400px;
+    min-height:400px;
+    height:auto;
     background:white;
     padding:50px 80px;
     transition:all 1s ease;
+    position:relative;
+    z-index:10;
 }
 
-
-/* EXPANDED ABOUT */
 .about-section.active{
-    padding:40px 100px;
+    padding:50px 80px;
 }
 
-
-/* ABOUT CONTAINER */
 .about-container{
     display:grid;
     grid-template-columns:45% 55%;
     gap:40px;
-
     position:relative;
-
     opacity:0;
-
     transition:opacity 0.8s ease 0.3s;
+    align-items:start;
 }
 
-
-/* ABOUT CONTAINER VISIBLE */
 .about-section.active .about-container{
     opacity:1;
 }
 
-
-/* LEFT SIDE */
 .about-content-wrapper{
     position:relative;
-    min-height:420px;
+    min-height:auto;
 }
 
-
-/* ABOUT TITLE */
 .about-title{
     font-size:120px;
     font-weight:900;
-
     line-height:0.85;
-
     color:black;
-
     position:relative;
-
     z-index:2;
+    word-break:break-word;
 }
 
-
-/* ABOUT IMAGE WRAPPER */
 .about-image-wrapper{
-    position:absolute;
-
-    left:260px;
-    top:80px;
-
+    position:relative;
+    left:0;
+    top:0;
     z-index:1;
 }
 
-
-/* ABOUT IMAGE */
 .about-image{
     width:170px;
-
     height:auto;
-
     object-fit:cover;
-
     box-shadow:0 10px 30px rgba(0,0,0,0.15);
-
     transform:translateY(200px);
-
     opacity:0;
-
     transition:all 1s ease 0.60s;
 }
 
-
-/* IMAGE ANIMATION ON SCROLL */
 .about-section.active .about-image{
     transform:translateY(0);
     opacity:1;
 }
 
-
-/* RIGHT SIDE TEXT */
 .about-paragraphs{
     display:flex;
     flex-direction:column;
-
-    gap:40px;
-
-    padding-top:20px;
+    gap:20px;
+    padding-top:0;
 }
 
-
-/* ABOUT TEXT */
 .about-paragraphs p{
     font-size:18px;
-
-    line-height:2;
-
+    line-height:1.8;
     color:#666;
-
-    max-width:650px;
+    max-width:100%;
 }
 
+/* ====================================== */
+/* BOTTOM IMAGE SECTION (PARALLAX ZONE)   */
+/* ====================================== */
 
-/* BOTTOM IMAGE */
-.bottom-image{
+.bottom-section{
     width:100%;
-    height:800px;
+    height:900px;
+    position:relative;
+    overflow:hidden;
+    background:#1a1a1a;
+}
 
+/* Background image with parallax */
+.bottom-bg{
+    position:absolute;
+    inset:0;
     background-image:url("bottomimage.jpg");
+    background-color:#2a2018;
     background-size:cover;
     background-position:center;
-
-    transition:all 1s ease;
-
-    transform:translateY(0);
+    will-change:transform;
+    transform:translateY(0px) scale(1.1);
 }
 
+/* Dark overlay */
+.bottom-bg::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+}
 
-/* IMAGE MOVEMENT ON EXPAND */
+/* ====================================== */
+/* PARALLAX TEXT — slides from behind about section */
+/* ====================================== */
+
+.parallax-text-layer{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:visible;
+    z-index:2;
+    pointer-events:none;
+}
+
+.parallax-text{
+    font-size:160px;
+    font-weight:900;
+    letter-spacing:-6px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.15);
+    white-space:nowrap;
+    will-change:transform;
+    /* Start above the bottom section — behind the about section */
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translate(-50%, -100%);
+    opacity:1;
+    line-height:1;
+    user-select:none;
+}
+
+.parallax-text span{
+    display:block;
+    text-align:center;
+}
+
+/* ====================================== */
+/* OVERLAY IMAGE — above bg & text, below photos */
+/* ====================================== */
+
+.overlay-image-wrapper{
+    position:absolute;
+    inset:0;
+    z-index:4;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
+}
+
+.overlay-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0.6;
+    /* swap object-position to frame the image how you like */
+    object-position:center;
+}
+
+/* ====================================== */
+/* PHOTO GRID — parallax photos           */
+/* ====================================== */
+
+.photo-grid{
+    position:absolute;
+    inset:0;
+    z-index:3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:20px;
+    padding:60px 80px;
+}
+
+/* Each photo column */
+.photo-col{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    flex:1;
+    max-width:260px;
+}
+
+.photo-item{
+    width:100%;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    will-change:transform;
+}
+
+.photo-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform 0.4s ease;
+}
+
+.photo-item:hover img{
+    transform:scale(1.04);
+}
+
+/* TOP-DOWN photos (2 photos) — start above viewport */
+.photo-from-top{
+    transform:translateY(-180px);
+    opacity:0;
+    transition:opacity 0.6s ease;
+}
+
+/* BOTTOM-UP photos (3 photos) — start below */
+.photo-from-bottom{
+    transform:translateY(180px);
+    opacity:0;
+    transition:opacity 0.6s ease;
+}
+
+/* Heights for visual variety */
+.photo-col:nth-child(1) .photo-item{ height:320px; }
+.photo-col:nth-child(2) .photo-item:nth-child(1){ height:220px; }
+.photo-col:nth-child(2) .photo-item:nth-child(2){ height:380px; }
+.photo-col:nth-child(3) .photo-item{ height:280px; }
+.photo-col:nth-child(4) .photo-item{ height:340px; }
+.photo-col:nth-child(5) .photo-item{ height:250px; }
+
+/* ====================================== */
+/* SPLIT IMAGE MOVEMENT */
+/* ====================================== */
+
 .split-wrapper.active .top-image{
     transform:translateY(-80px);
 }
 
-.split-wrapper.active .bottom-image{
-    transform:translateY(80px);
-}
-
-
+/* ====================================== */
 /* MOBILE */
+/* ====================================== */
+
 @media(max-width:1400px){
-
-    .paper{
-        width:95%;
-    }
-
-    .logo{
-        font-size:10vw;
-    }
+    .paper{ width:95%; }
+    .logo{ font-size:10vw; }
+    .intro-logo{ font-size:120px; }
+    .parallax-text{ font-size:100px; }
+    .about-section{ padding:50px 60px; }
+    .about-title{ font-size:90px; }
 }
 
-
-@media(max-width:900px){
-
-    header{
-        height:auto;
-        gap:30px;
-    }
-
-    nav{
-        gap:20px;
-        flex-wrap:wrap;
-    }
-
-    .about-section{
-        padding:60px 40px;
-    }
-
-    .about-container{
-        grid-template-columns:1fr;
-        gap:40px;
-    }
-
-    .about-title{
-        font-size:70px;
-    }
-
-    .about-image-wrapper{
-        position:relative;
-        left:0;
-        top:20px;
-    }
-
-    .about-content-wrapper{
-        min-height:auto;
-    }
-
-    .about-image{
-        width:200px;
-    }
+@media(max-width:1024px){
+    .about-section{ padding:40px 40px; }
+    .about-container{ grid-template-columns:1fr; gap:30px; }
+    .about-title{ font-size:80px; }
+    .about-image-wrapper{ margin-top:20px; }
+    header{ height:240px; }
 }
 
+@media(max-width:768px){
+    header{ height:auto; gap:25px; padding:25px 25px; }
+    nav{ gap:15px; flex-wrap:wrap; justify-content:center; }
+    .about-section{ padding:30px 25px; }
+    .about-container{ grid-template-columns:1fr; gap:25px; }
+    .about-title{ font-size:60px; }
+    .about-paragraphs p{ font-size:16px; line-height:1.6; }
+    .about-image{ width:150px; }
+    .about-image-wrapper{ margin-top:15px; }
+    .parallax-text{ font-size:50px; }
+    .photo-grid{ gap:8px; padding:30px 15px; }
+    .bottom-section{ height:700px; }
+    .intro-logo{ font-size:80px; }
+}
+
+@media(max-width:480px){
+    .paper{ width:100%; }
+    header{ height:auto; gap:20px; padding:20px 15px; }
+    nav{ gap:10px; flex-wrap:wrap; justify-content:center; }
+    nav a{ font-size:11px; }
+    .logo{ font-size:50px; }
+    .intro-logo{ font-size:60px; }
+    .about-section{ padding:25px 15px; min-height:auto; }
+    .about-container{ grid-template-columns:1fr; gap:20px; }
+    .about-title{ font-size:45px; }
+    .about-paragraphs p{ font-size:14px; line-height:1.5; }
+    .about-image{ width:120px; }
+    .parallax-text{ font-size:35px; }
+    .photo-grid{ gap:6px; padding:20px 10px; }
+    .photo-col:nth-child(1) .photo-item{ height:200px; }
+    .photo-col:nth-child(2) .photo-item:nth-child(1){ height:150px; }
+    .photo-col:nth-child(2) .photo-item:nth-child(2){ height:250px; }
+    .photo-col:nth-child(3) .photo-item{ height:180px; }
+    .photo-col:nth-child(4) .photo-item{ height:220px; }
+    .photo-col:nth-child(5) .photo-item{ height:160px; }
+    .bottom-section{ height:500px; }
+}
