@@ -243,7 +243,7 @@ nav a:hover{
     position:absolute;
     inset:0;
     background-image:url("bottomimage.jpg");
-    background-color:#2a2018;
+    
     background-size:cover;
     background-position:center;
     will-change:transform;
@@ -255,7 +255,7 @@ nav a:hover{
     content:'';
     position:absolute;
     inset:0;
-    background:rgba(0,0,0,0.45);
+    
 }
 
 /* ====================================== */
@@ -278,7 +278,7 @@ nav a:hover{
     font-weight:900;
     letter-spacing:-6px;
     text-transform:uppercase;
-    color:rgba(255,255,255,0.15);
+    color:rgb(27, 67, 28);
     white-space:nowrap;
     will-change:transform;
     /* Start above the bottom section — behind the about section */
@@ -314,7 +314,7 @@ nav a:hover{
     width:100%;
     height:100%;
     object-fit:cover;
-    opacity:0.6;
+    opacity:1;
     /* swap object-position to frame the image how you like */
     object-position:center;
 }
