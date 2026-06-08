@@ -247,5 +247,5 @@ Fully responsive and optimized for:
 ## 👨‍💻 Developer
 
 Developed using React, Vite, and Firebase.
-
+Developed by @Kavyashetty164 and @harshith8899
 Photography Portfolio Project – Bhavana Clicks.
