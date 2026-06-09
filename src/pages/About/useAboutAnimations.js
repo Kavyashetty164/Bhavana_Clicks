@@ -92,6 +92,12 @@ function useAboutAnimations() {
     const pbot3 =
       document.getElementById("pbot3");
 
+    const ptop3 =
+      document.getElementById("ptop3");
+
+    const pbot4 =
+      document.getElementById("pbot4");
+
     let expanded = false;
     let photosRevealed = false;
 
@@ -197,7 +203,7 @@ function useAboutAnimations() {
         const textY =
           lerp(
             -textHeight,
-            bH * 0.45,
+            bH * 0.3,
             progress
           );
 
@@ -215,7 +221,8 @@ function useAboutAnimations() {
       ) {
         photosRevealed = true;
 
-        [ptop1, ptop2].forEach(
+        // Top photos
+        [ptop1, ptop2, ptop3].forEach(
           (el, i) => {
             if (!el) return;
 
@@ -232,7 +239,8 @@ function useAboutAnimations() {
           }
         );
 
-        [pbot1, pbot2, pbot3].forEach(
+        // Bottom photos
+        [pbot1, pbot2, pbot3, pbot4].forEach(
           (el, i) => {
             if (!el) return;
 
@@ -252,10 +260,10 @@ function useAboutAnimations() {
 
       // CONTINUOUS PARALLAX
       if (photosRevealed) {
+
         const photoProgress =
           clamp(
-            (progress - 0.1) /
-              0.8,
+            (progress - 0.1) / 0.8,
             0,
             1
           );
@@ -263,36 +271,46 @@ function useAboutAnimations() {
         const topDrift =
           lerp(
             0,
-            -50,
+            -120,
             photoProgress
           );
 
         const botDrift =
           lerp(
             0,
-            50,
+            120,
             photoProgress
           );
 
+        // TOP PHOTOS
         if (ptop1)
           ptop1.style.transform =
-            `translateY(${topDrift}px)`;
+            `translateY(${topDrift * 1.4}px)`;
 
         if (ptop2)
           ptop2.style.transform =
-            `translateY(${topDrift * 0.8}px)`;
+            `translateY(${topDrift * 1.5}px)`;
 
+        if (ptop3)
+          ptop3.style.transform =
+            `translateY(${topDrift * 2}px)`;
+
+        // BOTTOM PHOTOS
         if (pbot1)
           pbot1.style.transform =
-            `translateY(${botDrift}px)`;
+            `translateY(${botDrift * 0.5}px)`;
 
         if (pbot2)
           pbot2.style.transform =
-            `translateY(${botDrift * 1.2}px)`;
+            `translateY(${topDrift * 0.3}px)`;
 
         if (pbot3)
           pbot3.style.transform =
-            `translateY(${botDrift * 0.9}px)`;
+            `translateY(${botDrift * 2}px)`;
+
+        if (pbot4)
+          pbot4.style.transform =
+            `translateY(${botDrift * 2.9}px)`;
       }
     };
 

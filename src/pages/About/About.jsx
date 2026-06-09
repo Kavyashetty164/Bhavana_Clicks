@@ -102,73 +102,119 @@ function About() {
 
             <div className="photo-grid">
 
-              <div className="photo-col">
-                <div
-                  className="photo-item photo-from-top"
-                  id="ptop1"
-                >
-                  <img
-                    src="/images/gallery1.jpg"
-                    alt=""
-                  />
-                </div>
+  <div
+    className="photo-item photo-from-top"
+    id="ptop1"
+  >
+    <img
+      src="/images/gallery1.jpg"
+      alt=""
+    />
+  </div>
+
+  <div
+    className="photo-item photo-from-bottom"
+    id="pbot1"
+  >
+    <img
+      src="/images/gallery2.jpg"
+      alt=""
+    />
+  </div>
+
+  <div
+    className="photo-item photo-from-top"
+    id="ptop2"
+  >
+    <img
+      src="/images/gallery3.jpg"
+      alt=""
+    />
+  </div>
+
+  <div
+    className="photo-item photo-from-bottom"
+    id="pbot2"
+  >
+    <img
+      src="/images/gallery4.jpg"
+      alt=""
+    />
+  </div>
+
+  <div
+    className="photo-item photo-from-bottom"
+    id="pbot3"
+  >
+    <img
+      src="/images/gallery5.jpg"
+      alt=""
+    />
+  </div>
+
+  <div className="photo-item photo-from-top" id="ptop3">
+  <img src="/images/gallery6.jpg" alt="" />
+</div>
+
+<div className="photo-item photo-from-bottom" id="pbot4">
+  <img src="/images/gallery7.jpg" alt="" />
+</div>
+
+</div>
+
+          </div>
+
+
+          <section className="experience-section">
+
+          <div className="experience-container">
+
+          <div className="experience-heading">
+          EXPERIENCE
+          </div>
+
+          <div className="experience-content">
+
+            <div className="experience-item">
+
+              <div className="year">
+                2020 - Present
               </div>
 
-              <div className="photo-col">
-                <div
-                  className="photo-item photo-from-bottom"
-                  id="pbot1"
-                >
-                  <img
-                    src="/images/gallery2.jpg"
-                    alt=""
-                  />
-                </div>
+              <div className="details">
+                <h3>Creative Photographer</h3>
+                <p>
+                  Creating visual stories through portrait,
+                  fashion and editorial photography.
+                </p>
               </div>
 
-              <div className="photo-col">
-                <div
-                  className="photo-item photo-from-top"
-                  id="ptop2"
-                >
-                  <img
-                    src="/images/gallery3.jpg"
-                    alt=""
-                  />
-                </div>
-              </div>
+            </div>
 
-              <div className="photo-col">
-                <div
-                  className="photo-item photo-from-bottom"
-                  id="pbot2"
-                >
-                  <img
-                    src="/images/gallery4.jpg"
-                    alt=""
-                  />
-                </div>
-              </div>
+            <div className="experience-item">
 
-              <div className="photo-col">
-                <div
-                  className="photo-item photo-from-bottom"
-                  id="pbot3"
-                >
-                  <img
-                    src="/images/gallery5.jpg"
-                    alt=""
-                  />
-                </div>
+              <div className="year">
+                2018 - 2020
+             </div>
+
+             <div className="details">
+                <h3>Freelance Photographer</h3>
+                <p>
+                 Worked with brands and individuals
+                 to create premium visual content.
+                </p>
               </div>
 
             </div>
 
           </div>
 
-        </section>
+        </div>
 
-      </div>
+      </section>
+      </section>
+
+    </div>
     </>
   );
 }
