@@ -137,7 +137,7 @@ nav a:hover{
 .top-image{
     width:100%;
     height:450px;
-    background-image:url("topimage.jpg");
+    /* background-image removed — set via inline style in JSX from Cloudinary */
     background-color:#c8b8a8;
     background-size:cover;
     background-position:center;
@@ -181,12 +181,12 @@ nav a:hover{
 }
 
 .about-title{
-    font-size:120px;
+    font-size:80px;
     font-weight:900;
     line-height:0.85;
-    color:black;
+    color:rgb(0, 0, 0);
     position:relative;
-    z-index:2;
+    z-index:0;
     word-break:break-word;
 }
 
@@ -194,7 +194,7 @@ nav a:hover{
     position:relative;
     left:0;
     top:0;
-    z-index:1;
+    z-index:2;
 }
 
 .about-image{
@@ -202,7 +202,7 @@ nav a:hover{
     height:auto;
     object-fit:cover;
     box-shadow:0 10px 30px rgba(0,0,0,0.15);
-    transform:translateY(200px);
+    transform:translateY(220px);
     opacity:0;
     transition:all 1s ease 0.60s;
 }
@@ -242,8 +242,7 @@ nav a:hover{
 .bottom-bg{
     position:absolute;
     inset:0;
-    background-image:url("bottomimage.jpg");
-    
+    /* background-image removed — set via inline style in JSX from Cloudinary */
     background-size:cover;
     background-position:center;
     will-change:transform;
@@ -255,7 +254,6 @@ nav a:hover{
     content:'';
     position:absolute;
     inset:0;
-    
 }
 
 /* ====================================== */
@@ -315,7 +313,6 @@ nav a:hover{
     height:100%;
     object-fit:cover;
     opacity:1;
-    /* swap object-position to frame the image how you like */
     object-position:center;
 }
 
@@ -434,22 +431,16 @@ nav a:hover{
     position:absolute;
     left:0;
     bottom:0;
-
     width:100%;
     height:80px;
-
     background:linear-gradient(
         to bottom,
         rgba(0,0,0,0),
         rgba(0,0,0,1)
     );
-
     pointer-events:none;
     z-index:20;
 }
-
-
-
 
 /* ====================================== */
 /* SPLIT IMAGE MOVEMENT */
@@ -518,9 +509,7 @@ nav a:hover{
     .bottom-section{ height:500px; }
 }
 
-/* Exprience section*/
-
-
+/* Experience section */
 
 .experience-section{
     width:100%;
