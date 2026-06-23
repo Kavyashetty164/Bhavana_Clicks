@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
 export default function Navbar() {
+  const location = useLocation();
+
+  if (location.pathname === "/about") {
+    return null;
+  }
+
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -61,7 +67,7 @@ export default function Navbar() {
           <span onClick={() => scrollTo("couples")}>Couples</span>
           <span onClick={() => scrollTo("pricing")}>Pricing</span>
           <span onClick={() => scrollTo("guides")}>Wedding guides</span>
-          <Link to="/about" onClick={() => setMenuOpen(false)}>About me</Link>
+          <Link to="/about" onClick={() => setMenuOpen(false)} className="navbar__link">About me</Link>
           <span onClick={() => scrollTo("contact")}>Contact</span>
         </div>
       )}

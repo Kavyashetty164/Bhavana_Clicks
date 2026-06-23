@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import Home from "./pages/Home/Home";
-import About from "./pages/About/About";
+import Navbar from "../components/Navbar/Navbar";
+import Home from "../pages/Home/Home";
+import About from "../pages/About/About";
 
 function App() {
   return (
@@ -14,3 +14,5 @@ function App() {
     </BrowserRouter>
   );
 }
+
+export default App;
