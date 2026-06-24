@@ -10,22 +10,18 @@ function About() {
   const [imageMap, setImageMap] = useState({});
 
   useEffect(() => {
-
     async function loadImages() {
-  const data = await getImages();
+      const data = await getImages();
+      const map = {};
 
-  console.log("Firestore data:", data);
+      data.forEach((img) => {
+        map[img.position] = img.imageUrl;
+      });
 
-  const map = {};
+      setImageMap(map);
+    }
 
-  data.forEach((img) => {
-    map[img.position] = img.imageUrl;
-  });
-
-  console.log("Image map:", map);
-
-  setImageMap(map);
-}
+    loadImages();
   }, []);
 
   return (
@@ -93,6 +89,7 @@ function About() {
               <div className="about-paragraphs">
                 <p>
                   As a photographer and creative director,
+                  I combine technical expertise with visual storytelling.As a photographer and creative director,
                   I combine technical expertise with visual storytelling.
                 </p>
               </div>
