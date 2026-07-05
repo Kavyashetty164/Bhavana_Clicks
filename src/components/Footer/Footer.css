@@ -1,40 +1,80 @@
-import { Link } from "react-router-dom";
-import "./Footer.css";
+.footer {
+  background: #2e3526;
+  color: rgba(247, 244, 237, 0.75);
+  text-align: center;
+  padding: 72px 48px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
 
-export default function Footer() {
-  return (
-    <footer className="footer">
-      <div className="footer__top">
-        <p className="footer__inclusive">
-          Inclusive &amp; welcoming to all couples, all backgrounds, all love stories.
-        </p>
-        <div className="footer__logo">
-          Bhavana <em>Clicks</em>
-        </div>
-        <p className="footer__tagline">
-          Intimate Wedding &amp; Elopement Photography — Karnataka &amp; Worldwide
-        </p>
-      </div>
+.footer__logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: #f7f4ed;
+  margin-bottom: 8px;
+}
+.footer__logo em {
+  font-style: italic;
+  color: #c7d2b4;
+}
 
-      <div className="footer__divider" />
+.footer__inclusive {
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: #c7d2b4;
+  line-height: 1.9;
+}
 
-      <div className="footer__nav">
-        <Link to="/gallery?type=weddings">Weddings</Link>
-        <Link to="/gallery?type=couples">Couples</Link>
-        <Link to="/services">Pricing</Link>
-        <Link to="/about">About Me</Link>
-        <Link to="/contact">Contact</Link>
-      </div>
+.footer__studio {
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(247, 244, 237, 0.5);
+  line-height: 1.9;
+}
 
-      <div className="footer__social">
-        <a href="https://instagram.com/bhavana.clicks" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a>
-        <a href="https://pinterest.com" target="_blank" rel="noreferrer">Pinterest</a>
-      </div>
+.footer__contact {
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c7d2b4;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(199, 210, 180, 0.4);
+  padding-bottom: 3px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.footer__contact:hover {
+  color: #f7f4ed;
+  border-color: rgba(247, 244, 237, 0.5);
+}
 
-      <p className="footer__copy">
-        © {new Date().getFullYear()} Bhavana Clicks · All Rights Reserved · Bengaluru, India
-      </p>
-    </footer>
-  );
+.footer__copy {
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(247, 244, 237, 0.3);
+}
+
+.footer__social {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 8px;
+}
+.footer__social a {
+  color: rgba(247, 244, 237, 0.5);
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+.footer__social a:hover { color: #c7d2b4; }
+
+@media (max-width: 768px) {
+  .footer { padding: 56px 24px 40px; }
 }

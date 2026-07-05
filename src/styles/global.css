@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap");
 @import "./variables.css";
 
+/* ── RESET ── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -9,16 +10,30 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  overflow-x: hidden;
   font-family: var(--font-serif);
   background: var(--bg);
   color: var(--ink);
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── BASE ── */
 img {
   display: block;
   width: 100%;
@@ -31,6 +46,10 @@ a {
   color: inherit;
 }
 
+ul, ol {
+  list-style: none;
+}
+
 button {
   cursor: pointer;
   border: none;
@@ -38,14 +57,17 @@ button {
   font-family: inherit;
 }
 
+/* ── SHARED BUTTONS ── */
 .btn {
   font-family: var(--font-sans);
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all var(--transition);
+  transition: all 0.25s ease;
   display: inline-block;
+  border: none;
+  background: none;
 }
 
 .btn--outline {
@@ -60,13 +82,13 @@ button {
 }
 
 .btn--outline-white {
-  border: 1px solid var(--white);
+  border: 1px solid rgba(255,255,255,0.9);
   padding: 14px 36px;
-  color: var(--white);
+  color: #ffffff;
   background: transparent;
 }
 .btn--outline-white:hover {
-  background: var(--white);
+  background: #ffffff;
   color: var(--ink);
 }
 
@@ -86,7 +108,7 @@ button {
 
 .btn--solid {
   background: var(--ink);
-  color: var(--white);
+  color: #ffffff;
   padding: 16px 44px;
   border: 1px solid var(--ink);
 }
@@ -96,16 +118,17 @@ button {
 }
 
 .btn--solid-white {
-  background: var(--white);
+  background: #ffffff;
   color: var(--ink);
   padding: 16px 44px;
-  border: 1px solid var(--white);
+  border: 1px solid #ffffff;
 }
 .btn--solid-white:hover {
   background: transparent;
-  color: var(--white);
+  color: #ffffff;
 }
 
+/* ── SHARED SECTION STYLES ── */
 .section-kicker {
   font-family: var(--font-sans);
   font-size: 11px;

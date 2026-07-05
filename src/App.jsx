@@ -8,9 +8,11 @@ import "./styles/animations.css";
 export default function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <AppRoutes />
-      <Footer />
+      <div style={{ margin: 0, padding: 0, width: "100%", overflowX: "hidden" }}>
+        <Navbar />
+        <AppRoutes />
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }

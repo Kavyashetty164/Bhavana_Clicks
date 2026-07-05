@@ -1,43 +1,29 @@
+/* ── HERO ── */
 .hero {
   position: relative;
+  width: 100%;
   height: 100vh;
   min-height: 600px;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-.hero__slide {
+.hero__bg {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity 1.2s ease;
-  /* TEMP background until real photos added */
-  background: linear-gradient(135deg, #c7d2b4 0%, #eef0e6 50%, #f1ece0 100%);
-}
-.hero__slide--active { opacity: 1; }
-.hero__slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  animation: heroPan 6s ease forwards;
-}
-
-@keyframes heroPan {
-  from { transform: scale(1.06); }
-  to   { transform: scale(1); }
+  background: linear-gradient(135deg, #b8c4a0 0%, #c8d4b4 50%, #d4cfc0 100%);
+  /* Once you add /public/images/hero.jpg, replace above with: */
+  /* background-image: url('/images/hero.jpg');
+     background-size: cover;
+     background-position: center; */
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.28) 0%,
-    rgba(0,0,0,0.18) 50%,
-    rgba(0,0,0,0.42) 100%
-  );
+  background: rgba(0, 0, 0, 0.18);
   z-index: 1;
 }
 
@@ -45,66 +31,68 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  animation: heroFadeUp 1.2s ease 0.3s both;
 }
 
-.hero__eyebrow {
-  font-family: var(--font-sans);
+.hero__line {
+  font-family: "Jost", sans-serif;
   font-size: 13px;
-  letter-spacing: 0.38em;
+  font-weight: 400;
+  letter-spacing: 0.42em;
   text-transform: uppercase;
-  color: var(--white);
-  line-height: 2.4;
-}
-
-.hero__dots {
-  position: absolute;
-  bottom: 56px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  gap: 10px;
-}
-
-.hero__dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.4);
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
-  padding: 0;
-}
-.hero__dot--active {
-  background: var(--white);
-  transform: scale(1.3);
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 2.8;
+  display: block;
 }
 
 .hero__scroll {
   position: absolute;
-  bottom: 28px;
-  right: 40px;
+  bottom: 32px;
+  right: 36px;
   z-index: 2;
-  font-family: var(--font-sans);
+  font-family: "Jost", sans-serif;
   font-size: 10px;
+  font-weight: 400;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
   background: none;
   border: none;
   cursor: pointer;
   writing-mode: vertical-rl;
-  transition: color 0.2s ease;
+  transition: color 0.2s;
 }
-.hero__scroll:hover { color: var(--white); }
+.hero__scroll:hover { color: #ffffff; }
 
-@keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ── 3-PHOTO COLLAGE ── */
+.collage {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 55vh;
+  min-height: 380px;
+}
+
+.collage__item {
+  overflow: hidden;
+  background: #c7d2b4;
+  /* placeholder color until real photos added */
+}
+
+.collage__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.collage__item:hover img {
+  transform: scale(1.04);
 }
 
 @media (max-width: 768px) {
-  .hero__eyebrow { font-size: 11px; letter-spacing: 0.25em; }
+  .hero__line { font-size: 10px; letter-spacing: 0.25em; }
+  .collage { grid-template-columns: 1fr; height: auto; }
+  .collage__item { height: 280px; }
 }
