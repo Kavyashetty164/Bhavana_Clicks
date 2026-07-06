@@ -1,54 +1,62 @@
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Weddings.css";
 
-export default function Weddings() {
-  const leftRef = useRef(null);
-  const rightRef = useRef(null);
+const POSTS = [
+  { id: 1, image: "/images/weddings/w1.jpg", category: "Elopements / Weddings", title: "Coorg Forest Elopement | Meera & Arjun" },
+  { id: 2, image: "/images/weddings/w2.jpg", category: "Elopements / Weddings", title: "Goa Beach Wedding | Diya & Karthik" },
+  { id: 3, image: "/images/weddings/w3.jpg", category: "Elopements / Weddings", title: "Himalayan Vows | Sneha & Vikram" },
+  { id: 4, image: "/images/weddings/w4.jpg", category: "Elopements / Weddings", title: "Kerala Backwaters | Priya & Rohan" },
+  { id: 5, image: "/images/weddings/w5.jpg", category: "Elopements / Weddings", title: "Nandi Hills Sunrise | Anu & Dev" },
+  { id: 6, image: "/images/weddings/w6.jpg", category: "Elopements / Weddings", title: "Mysore Palace Wedding | Kavya & Arun" },
+];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("visible")),
-      { threshold: 0.15 }
-    );
-    if (leftRef.current) observer.observe(leftRef.current);
-    if (rightRef.current) observer.observe(rightRef.current);
-    return () => observer.disconnect();
-  }, []);
+const FILTERS = ["All", "Elopements / Weddings"];
+
+export default function WeddingsPage() {
+  const [active, setActive] = useState("All");
+  const filtered = active === "All" ? POSTS : POSTS.filter(p => p.category === active);
 
   return (
-    <section className="weddings" id="weddings">
-      {/* WEDDINGS */}
-      <div className="weddings__panel fade-in" ref={leftRef}>
-        <img src="/images/weddings-cover.jpg" alt="Wedding photography" />
-        <div className="weddings__panel-overlay" />
-        <div className="weddings__panel-text">
-          <span className="weddings__panel-kicker">Portfolio</span>
-          <h2 className="weddings__panel-title">Weddings</h2>
-          <p className="weddings__panel-sub">
-            Intimate ceremonies &amp; adventurous elopements
-          </p>
-          <Link to="/gallery?type=weddings" className="btn btn--outline-white">
-            View Gallery
-          </Link>
+    <main className="wp">
+
+      {/* HERO */}
+      <div className="wp__hero">
+        <img src="/images/weddings-hero.jpg" alt="Weddings" />
+        <div className="wp__hero-overlay" />
+        <div className="wp__hero-text">
+          <p className="wp__hero-kicker">Portfolio</p>
+          <h1 className="wp__hero-title">Weddings</h1>
         </div>
       </div>
 
-      {/* COUPLES */}
-      <div className="weddings__panel fade-in delay-2" ref={rightRef}>
-        <img src="/images/couples-cover.jpg" alt="Couples photography" />
-        <div className="weddings__panel-overlay" />
-        <div className="weddings__panel-text">
-          <span className="weddings__panel-kicker">Portfolio</span>
-          <h2 className="weddings__panel-title">Couples</h2>
-          <p className="weddings__panel-sub">
-            Engagements &amp; adventurous sessions
-          </p>
-          <Link to="/gallery?type=couples" className="btn btn--outline-white">
-            View Gallery
-          </Link>
-        </div>
+      {/* FILTERS */}
+      <div className="wp__filters">
+        {FILTERS.map(f => (
+          <button
+            key={f}
+            className={`wp__filter ${active === f ? "active" : ""}`}
+            onClick={() => setActive(f)}
+          >
+            {f}
+          </button>
+        ))}
       </div>
-    </section>
+
+      {/* GRID */}
+      <div className="wp__grid">
+        {filtered.map(post => (
+          <Link key={post.id} to={`/weddings/${post.id}`} className="wp__card">
+            <div className="wp__card-img">
+              <img src={post.image} alt={post.title} />
+            </div>
+            <p className="wp__card-cat">{post.category}</p>
+            <h2 className="wp__card-title">{post.title}</h2>
+            <span className="wp__card-link">Continue</span>
+          </Link>
+        ))}
+      </div>
+
+    </main>
   );
 }
